@@ -1,0 +1,32 @@
+{"_id":{"$oid":"5d911ed13dad940410910ffe"},"ShortName":"NE","FullName":"New England Patriots","Division":"AFC-East"}
+{"_id":{"$oid":"5d911f5deab06d0410bf8146"},"ShortName":"BUF","FullName":"Buffalo Bills","Division":"AFC-East"}
+{"_id":{"$oid":"5d911fafeab06d0410bf8147"},"ShortName":"NYJ","FullName":"New York Jets","Division":"AFC-East"}
+{"_id":{"$oid":"5d911fbfeab06d0410bf8148"},"ShortName":"MIA","FullName":"Miami Dolphins","Division":"AFC-East"}
+{"_id":{"$oid":"5d911fd9eab06d0410bf8149"},"ShortName":"CLE","FullName":"Cleveland Browns","Division":"AFC-North"}
+{"_id":{"$oid":"5d911fe4eab06d0410bf814a"},"ShortName":"BAL","FullName":"Baltimore Ravens","Division":"AFC-North"}
+{"_id":{"$oid":"5d911ff2eab06d0410bf814b"},"ShortName":"CIN","FullName":"Cincinnati Bengals","Division":"AFC-North"}
+{"_id":{"$oid":"5d912009eab06d0410bf814c"},"ShortName":"PIT","FullName":"Pittsburgh Steelers","Division":"AFC-North"}
+{"_id":{"$oid":"5d912024eab06d0410bf814d"},"ShortName":"IND","FullName":"Indianapolis Colts","Division":"AFC-South"}
+{"_id":{"$oid":"5d912034eab06d0410bf814e"},"ShortName":"HOU","FullName":"Houston Texans","Division":"AFC-South"}
+{"_id":{"$oid":"5d912040eab06d0410bf814f"},"ShortName":"TEN","FullName":"Tennessee Titans","Division":"AFC-South"}
+{"_id":{"$oid":"5d912055eab06d0410bf8150"},"ShortName":"JAX","FullName":"Jacksonville Jaguars","Division":"AFC-South"}
+{"_id":{"$oid":"5d91206feab06d0410bf8151"},"ShortName":"KC","FullName":"Kansas City Chiefs","Division":"AFC-West"}
+{"_id":{"$oid":"5d912081eab06d0410bf8152"},"ShortName":"OAK","FullName":"Oakland Raiders","Division":"AFC-West"}
+{"_id":{"$oid":"5d912092eab06d0410bf8153"},"ShortName":"LAC","FullName":"Los Angeles Chargers","Division":"AFC-West"}
+{"_id":{"$oid":"5d9120a0eab06d0410bf8154"},"ShortName":"DEN","FullName":"Denver Broncos","Division":"AFC-West"}
+{"_id":{"$oid":"5d9120bfeab06d0410bf8155"},"ShortName":"DAL","FullName":"Dallas Cowboys","Division":"NFC-East"}
+{"_id":{"$oid":"5d9120d5eab06d0410bf8156"},"ShortName":"PHI","FullName":"Philadelphia Eagles","Division":"NFC-East"}
+{"_id":{"$oid":"5d9120e5eab06d0410bf8157"},"ShortName":"NYG","FullName":"New York Giants","Division":"NFC-East"}
+{"_id":{"$oid":"5d9120f7eab06d0410bf8158"},"ShortName":"WAS","FullName":"Washington Redskins","Division":"NFC-East"}
+{"_id":{"$oid":"5d91210deab06d0410bf8159"},"ShortName":"GB","FullName":"Green Bay Packers","Division":"NFC-North"}
+{"_id":{"$oid":"5d91211beab06d0410bf815a"},"ShortName":"MIN","FullName":"Minnesota Vikings","Division":"NFC-North"}
+{"_id":{"$oid":"5d912126eab06d0410bf815b"},"ShortName":"CHI","FullName":"Chicago Bears","Division":"NFC-North"}
+{"_id":{"$oid":"5d912138eab06d0410bf815c"},"ShortName":"DET","FullName":"Detroit Lions","Division":"NFC-North"}
+{"_id":{"$oid":"5d912148eab06d0410bf815d"},"ShortName":"NO","FullName":"New Orleans Saints","Division":"NFC-South"}
+{"_id":{"$oid":"5d91216eeab06d0410bf815e"},"ShortName":"CAR","FullName":"Carolina Panthers","Division":"NFC-South"}
+{"_id":{"$oid":"5d91217feab06d0410bf815f"},"ShortName":"TB","FullName":"Tampa Bay Buccaneers","Division":"NFC-South"}
+{"_id":{"$oid":"5d912190eab06d0410bf8160"},"ShortName":"ATL","FullName":"Atlanta Falcons","Division":"NFC-South"}
+{"_id":{"$oid":"5d9121aaeab06d0410bf8161"},"ShortName":"LA","FullName":"Los Angeles Rams","Division":"NFC-West"}
+{"_id":{"$oid":"5d9121c1eab06d0410bf8162"},"ShortName":"SF","FullName":"San Francisco 49ers","Division":"NFC-West"}
+{"_id":{"$oid":"5d9121d0eab06d0410bf8163"},"ShortName":"SEA","FullName":"Seattle Seahawks","Division":"NFC-West"}
+{"_id":{"$oid":"5d9121daeab06d0410bf8164"},"ShortName":"ARI","FullName":"Arizona Cardinals","Division":"NFC-West"}
