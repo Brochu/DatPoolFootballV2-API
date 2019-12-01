@@ -46,6 +46,13 @@ namespace WebAPI
 				sp => sp.GetRequiredService<IOptions<PoolDatabaseSettings>>().Value
 			);
 
+			services.Configure<NflDataSettings>(
+				Configuration.GetSection(nameof(NflDataSettings))
+			);
+			services.AddSingleton<INflDataSettings>(
+				sp => sp.GetRequiredService<IOptions<NflDataSettings>>().Value
+			);
+
 			services.AddSingleton<TeamService>();
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

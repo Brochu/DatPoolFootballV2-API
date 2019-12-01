@@ -9,7 +9,9 @@ using WebAPI.Services;
 
 namespace WebAPI.Controllers
 {
-	public class TeamsController : Controller
+	[Route("api/[controller]")]
+	[ApiController]
+	public class TeamsController : ControllerBase
 	{
 		private readonly TeamService _service;
 
@@ -19,13 +21,16 @@ namespace WebAPI.Controllers
 		}
 
 		[HttpGet]
-		public ActionResult<List<Team>> Get() =>
-			_service.Get();
-
-		[HttpGet("{id:length(24)}", Name = "GetTeam")]
-		public ActionResult<Team> Get(string shortName)
+		public ActionResult<List<Team>> Get()
 		{
-			var t = _service.Get(shortName);
+			var teams = _service.Get();
+			return teams;
+		}
+
+		[HttpGet("{id}")]
+		public ActionResult<Team> Get(string id)
+		{
+			var t = _service.Get(id);
 			if (t == null)
 			{
 				return NotFound();
@@ -34,38 +39,38 @@ namespace WebAPI.Controllers
 			return t;
 		}
 
-		[HttpPost]
-		public ActionResult<Team> Create(Team toAdd)
-		{
-			_service.Create(toAdd);
+		//[HttpPost]
+		//public ActionResult<Team> Create(Team toAdd)
+		//{
+		//	_service.Create(toAdd);
 
-			return CreatedAtRoute("GetBook", new { shortName = toAdd.ShortName }, toAdd);
-		}
+		//	return CreatedAtRoute("GetBook", new { shortName = toAdd.ShortName }, toAdd);
+		//}
 
-		[HttpPut("{id:length(24)}")]
-		public IActionResult Update(string shortName, Team newTeam)
-		{
-			var t = _service.Get(shortName);
-			if (t == null)
-			{
-				return NotFound();
-			}
+		//[HttpPut("{id:length(24)}")]
+		//public IActionResult Update(string shortName, Team newTeam)
+		//{
+		//	var t = _service.Get(shortName);
+		//	if (t == null)
+		//	{
+		//		return NotFound();
+		//	}
 
-			_service.Update(shortName, newTeam);
-			return NoContent();
-		}
+		//	_service.Update(shortName, newTeam);
+		//	return NoContent();
+		//}
 
-		[HttpDelete("{id:length(24)}")]
-		public IActionResult Delete(string shortName)
-		{
-			var t = _service.Get(shortName);
-			if (t == null)
-			{
-				return NotFound();
-			}
+		//[HttpDelete("{id:length(24)}")]
+		//public IActionResult Delete(string shortName)
+		//{
+		//	var t = _service.Get(shortName);
+		//	if (t == null)
+		//	{
+		//		return NotFound();
+		//	}
 
-			_service.Remove(t.ShortName);
-			return NoContent();
-		}
+		//	_service.Remove(t.ShortName);
+		//	return NoContent();
+		//}
 	}
 }
