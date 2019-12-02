@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,10 +23,21 @@ namespace WebAPI.Controllers
 		}
 
 		[HttpPut("UpdateMatches/{season}/{week}/{type}")]
-		public ActionResult<string> PutUpdateMatches(string season, string week, string type)
+		public async Task<ActionResult<string>> PutUpdateMatches(string season, string week, string type)
 		{
 			string url = string.Format(_settings.UpdateUrl, season, week, type);
-			return $"GOT IT: url to call = {url}";
+			var request = (HttpWebRequest)WebRequest.Create(url);
+			WebResponse response = await request.GetResponseAsync();
+
+			using(StreamReader sr = new StreamReader(response.GetResponseStream()))
+			{
+				string xml = await sr.ReadToEndAsync();
+
+				return xml;
+			}
+			// Create match model
+			// Parse XML to matches
+			// Save matches in DB
 		}
 	}
 }
