@@ -35,7 +35,6 @@ namespace WebAPI.Controllers
 
 				return xml;
 			}
-			// Create match model
 			// Parse XML to matches
 			// Save matches in DB
 		}
