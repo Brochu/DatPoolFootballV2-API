@@ -19,6 +19,9 @@ namespace WebAPI.Services
 		public Match Get(string id) =>
 			_collection.Find(match => match.Id.Equals(id)).Limit(1).FirstOrDefault();
 
+		public Match[] Get(int season) =>
+			_collection.Find(match => match.Season == season).ToEnumerable().ToArray();
+
 		public Match[] Get(int season, int week) =>
 			_collection.Find(match => match.Season == season && match.Week == week).ToEnumerable().ToArray();
 

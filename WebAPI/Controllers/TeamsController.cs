@@ -15,9 +15,9 @@ namespace WebAPI.Controllers
 	{
 		private readonly TeamService _service;
 
-		public TeamsController(TeamService teamService)
+		public TeamsController(TeamService service)
 		{
-			_service = teamService;
+			_service = service;
 		}
 
 		[HttpGet]
