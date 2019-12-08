@@ -8,7 +8,6 @@ namespace WebAPI.Models
 	public class Match : MongoModelBase
 	{
 		[BsonId]
-		[BsonRepresentation(BsonType.ObjectId)]
 		public string Id { get; set; }
 
 		public int Season { get; set; }

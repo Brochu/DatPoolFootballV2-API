@@ -54,6 +54,7 @@ namespace WebAPI
 			);
 
 			services.AddSingleton<TeamService>();
+			services.AddSingleton<MatchService>();
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 		}

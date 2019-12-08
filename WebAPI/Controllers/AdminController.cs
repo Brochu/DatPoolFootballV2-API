@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using WebAPI.Models;
 using WebAPI.Services;
+using WebAPI.Utils;
 
 namespace WebAPI.Controllers
 {
@@ -16,14 +17,16 @@ namespace WebAPI.Controllers
 	public class AdminController : ControllerBase
 	{
 		private INflDataSettings _settings;
+		private readonly MatchService _service;
 
-		public AdminController(INflDataSettings settings)
+		public AdminController(INflDataSettings settings, MatchService service)
 		{
 			_settings = settings;
+			_service = service;
 		}
 
 		[HttpPut("UpdateMatches/{season}/{week}/{type}")]
-		public async Task<ActionResult<string>> PutUpdateMatches(string season, string week, string type)
+		public async Task<ActionResult<Match[]>> PutUpdateMatches(string season, string week, string type)
 		{
 			string url = string.Format(_settings.UpdateUrl, season, week, type);
 			var request = (HttpWebRequest)WebRequest.Create(url);
@@ -32,11 +35,11 @@ namespace WebAPI.Controllers
 			using(StreamReader sr = new StreamReader(response.GetResponseStream()))
 			{
 				string xml = await sr.ReadToEndAsync();
+				Match[] matches = MatchUtils.ParseWeekFromXml(xml);
 
-				return xml;
+				_service.BatchWeek(matches);
+				return matches;
 			}
-			// Parse XML to matches
-			// Save matches in DB
 		}
 	}
 }
