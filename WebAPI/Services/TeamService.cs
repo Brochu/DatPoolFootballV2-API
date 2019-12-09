@@ -15,7 +15,7 @@ namespace WebAPI.Services
 		}
 
 		public Team Get(string shortName) =>
-			_collection.Find(team => team.ShortName.Equals(shortName)).FirstOrDefault();
+			_collection.Find(team => team.ShortName.Equals(shortName)).Limit(1).FirstOrDefault();
 
 		public void Update(string shortName, Team newTeam) =>
 			_collection.ReplaceOne(team => team.ShortName.Equals(shortName), newTeam);

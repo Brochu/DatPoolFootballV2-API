@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
+using Newtonsoft.Json.Linq;
+
 namespace WebAPI.Controllers
 {
 	[Route("api/[controller]")]
@@ -27,8 +29,9 @@ namespace WebAPI.Controllers
 
 		// POST api/values
 		[HttpPost]
-		public void Post([FromBody] string value)
+		public ActionResult<string> Post([FromBody] JToken value)
 		{
+			return value.ToString();
 		}
 
 		// PUT api/values/5

@@ -25,15 +25,8 @@ namespace WebAPI.Controllers
 		[HttpGet("season/{season}/{type}")]
 		public ActionResult<Match[]> GetSeasonMatches(string season, string type)
 		{
-			if (!int.TryParse(season, out int seasonYear))
-			{
-				return ValidationProblem(ErrorUtils.CreateErrorDetails(
-					400,
-					"Could not parse Season param",
-					$"Could not parse {season} as a season year",
-					"Bad Request")
-				);
-			}
+			int seasonYear = ControllerUtils.ParseSeasonYear(season, out ValidationProblemDetails error);
+			if (error != null) return ValidationProblem(error);
 			// TODO: Handle season types
 
 			return _service.Get(seasonYear);
@@ -42,24 +35,11 @@ namespace WebAPI.Controllers
 		[HttpGet("week/{season}/{week}/{type}")]
 		public ActionResult<Match[]> GetWeekMatches(string season, string week, string type)
 		{
-			if (!int.TryParse(season, out int seasonYear))
-			{
-				return ValidationProblem(ErrorUtils.CreateErrorDetails(
-					400,
-					"Could not parse Season param",
-					$"Could not parse {season} as a season year",
-					"Bad Request")
-				);
-			}
-			if (!int.TryParse(week, out int weekNum))
-			{
-				return ValidationProblem(ErrorUtils.CreateErrorDetails(
-					400,
-					"Could not parse Week param",
-					$"Could not parse {week} as a week number",
-					"Bad Request")
-				);
-			}
+			int seasonYear = ControllerUtils.ParseSeasonYear(season, out ValidationProblemDetails seasonError);
+			if (seasonError != null) return ValidationProblem(seasonError);
+
+			int weekNum = ControllerUtils.ParseWeekNum(week, out ValidationProblemDetails weekError);
+			if (weekError != null) return ValidationProblem(weekError);
 			// TODO: Handle season type
 
 			return _service.Get(seasonYear, weekNum);
