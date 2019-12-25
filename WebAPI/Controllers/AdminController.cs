@@ -41,5 +41,12 @@ namespace WebAPI.Controllers
 				return matches;
 			}
 		}
+
+		[HttpPut("UpdateMatchesManual/{season}/{week}/{type}")]
+		public ActionResult<Match[]> PutUpdateMatchesManual([FromBody] Match[] matches)
+		{
+			_service.BatchWeek(matches);
+			return matches;
+		}
 	}
 }
