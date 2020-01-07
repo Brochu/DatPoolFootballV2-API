@@ -48,11 +48,24 @@ namespace WebAPI.Controllers
 			int seasonYear = ControllerUtils.ParseSeasonYear(season, out ValidationProblemDetails error);
 			if (error != null) return ValidationProblem(error);
 			// TODO: Handle season types
+			// TODO: Get the pooler id from the logged in user (based on token)
 
-			Match[] seasonMatches = _matchService.Get(seasonYear);
-			// Create structure for matches with prediction joined
+			return FetchPredictions(_matchService.Get(seasonYear), "");
+		}
 
-			return new PredictionJoin[0];
+		[HttpGet("season/{season}/{week}/{type}")]
+		public ActionResult<PredictionJoin[]> GetSeasonPredictions(string season, string week, string type)
+		{
+			int seasonYear = ControllerUtils.ParseSeasonYear(season, out ValidationProblemDetails yearError);
+			if (yearError != null) return ValidationProblem(yearError);
+
+			int weekNum = ControllerUtils.ParseWeekNum(week, out ValidationProblemDetails weekError);
+			if (weekError != null) return ValidationProblem(weekError);
+			// TODO: Handle season types
+			// TODO: Get the pooler id from the logged in user (based on token)
+
+			Match[] seasonMatches = _matchService.Get(seasonYear, weekNum);
+			return FetchPredictions(_matchService.Get(seasonYear, weekNum), "");
 		}
 
 		[HttpPut("week")]
@@ -60,6 +73,19 @@ namespace WebAPI.Controllers
 		{
 			// TODO: Organise picks and save to DB
 			return "";
+		}
+
+		private PredictionJoin[] FetchPredictions(Match[] matches, string poolerId)
+		{
+			// Create structure for matches with prediction joined
+			return matches.Select
+			(m =>
+				new PredictionJoin
+				{
+					Match = m,
+					Prediction = _predictionService.Get(m.Id, "").FirstOrDefault()
+				}
+			).ToArray();
 		}
 	}
 }
